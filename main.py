@@ -1,6 +1,7 @@
 # PlanB (PlanBackup) - Johnathon Kwisses (Kwistech)
-import os
-from tkinter import *
+from os import listdir
+from shutil import copy, copytree
+from tkinter import Label, Entry, Button, Tk
 
 
 class App:
@@ -34,16 +35,25 @@ class App:
         info = [copy_entry, paste_entry]
 
         submit_button = Button(root, text="Submit", width=5, height=1,
-                               command= lambda: self.copy_paste(info))
+                               command=lambda: self.copy_paste(info, root))
         submit_button.grid(row=4, column=1, padx=10, pady=10, sticky="E")
 
     @staticmethod
-    def copy_paste(info):
-        copy_dir, paste_dir = info
-        copy_dir, paste_dir = copy_dir.get(), paste_dir.get()
+    def copy_paste(info, root):
+        copy_dir, paste_dir = [x.get() for x in info]
+        [x.delete(first=0, last=139) for x in info]
 
-        for file in os.listdir(copy_dir):
-            print(file)
+        for file in listdir(copy_dir):
+            directory = "{}\\{}"
+            src = directory.format(copy_dir, file)
+            dst = directory.format(paste_dir, file)
+            try:
+                copy(src=src, dst=dst)
+            except PermissionError:
+                copytree(src=src, dst=dst)
+
+        done_label = Label(root, text="Backup Complete!")
+        done_label.grid(row=4, column=1, sticky="W")
 
 
 def main():
