@@ -5,12 +5,23 @@ from tkinter import Label, Entry, Button, Tk
 
 
 class App:
+    """Class for desktop application."""
 
     def __init__(self, root):
+        """Initialize sub_text and interface().
+
+        Args:
+            root (tkinter.Tk): Tk() object.
+        """
         self.sub_text = "Enter the appropriate directories and press Submit"
         self.interface(root)
 
     def interface(self, root):
+        """Define interface Tkinter widgets.
+
+        Args:
+            root (tkinter.Tk): Tk() object.
+        """
         main_label = Label(root, text="Plan B - Backup Solution")
         main_label.grid(row=0, column=0, columnspan=2)
 
@@ -32,7 +43,7 @@ class App:
         paste_entry = Entry(root, width=30)
         paste_entry.grid(row=3, column=1)
 
-        info = [copy_entry, paste_entry]
+        info = [copy_entry, paste_entry]  # To get user info
 
         submit_button = Button(root, text="Submit", width=5, height=1,
                                command=lambda: self.copy_paste(info, root))
@@ -40,6 +51,15 @@ class App:
 
     @staticmethod
     def copy_paste(info, root):
+        """Get user-entered directories and copy files to paste directory.
+
+        Args:
+            info (list): Contains tkinter.Entry objects.
+            root (tkinter.Tk): Tk() object.
+
+        Raises:
+            PermissionError: If copy attempts to copy a directory.
+        """
         copy_dir, paste_dir = [x.get() for x in info]
         [x.delete(first=0, last=139) for x in info]
 
@@ -47,6 +67,7 @@ class App:
             directory = "{}\\{}"
             src = directory.format(copy_dir, file)
             dst = directory.format(paste_dir, file)
+
             try:
                 copy(src=src, dst=dst)
             except PermissionError:
@@ -57,6 +78,7 @@ class App:
 
 
 def main():
+    """Set Tkinter object and initiate class App."""
     root = Tk()
     root.title("Plan B")
 
