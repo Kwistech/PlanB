@@ -1,6 +1,6 @@
 # PlanB
 
-PlanB v.1.0.0
+PlanB v.1.0.0 (Python 3.5)
 
 Plan Backup is a backup solution written in Python using Tkinter
 
