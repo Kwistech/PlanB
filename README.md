@@ -16,8 +16,6 @@ Check the project's [Wiki](https://github.com/Kwistech/PlanB/wiki) for more info
 
 The program uses the JSON files in its data directory to access the files, folders, and settings for the program. Once the program has read this data, it then starts to copy and paste this data into the save directory found in the settings file. 
 
-If the program runs into read-only files, the program will output an error message. This is because the program cannot delete read-only files! The solution to this issue is to manually delete the save directory and run the program again.
-
 ## How To Use
 
 To use PlanB, a user enters all of the paths they would like to backup into the save directory. 
