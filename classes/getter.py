@@ -20,18 +20,18 @@ class Getter(object):
 
     @staticmethod
     def unpack(files, folders, settings):
-        d_files = []
-        d_folders = []
-        d_settings = []
+        data_files = []
+        data_folders = []
+        data_settings = []
 
-        for file_ in list(files):
-            d_files.append(file_)
-        for folder_ in list(folders):
-            d_folders.append(folder_)
-        for setting_ in list(settings):
-            d_settings.append(setting_)
+        for file in list(files):
+            data_files.append(file)
+        for folder in list(folders):
+            data_folders.append(folder)
+        for setting in list(settings):
+            data_settings.append(setting)
 
-        data = d_files, d_folders, d_settings
+        data = data_files, data_folders, data_settings
         return data
 
     def get_files(self):
