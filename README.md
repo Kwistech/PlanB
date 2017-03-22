@@ -1,23 +1,28 @@
 # PlanB
 
-PlanB v.1.0.0 (Python 3.5)
+PlanB v.1.1.0 (Python 3.5)
 
-Plan Backup is a backup solution written in Python using Tkinter
+PlanB (Plan Backup) is a backup solution written in Python.
 
 Check the project's [Wiki](https://github.com/Kwistech/PlanB/wiki) for more info.
 
-## Installation ##
+## Installation & Runtime
 
 + Fork the repository and clone it to your local drive.
++ Open a terminal and go to the program's root directory.
++ From the program's root directory, type: `python main.py`
 
-+ From the program's root directory, double-click `main.py`
+## How the Program Works
 
-## How to Use
+The program uses the JSON files in its data directory to access the files, folders, and settings for the program. Once the program has read this data, it then starts to copy and paste this data into the save directory found in the settings file. 
 
-The below image is the GUI for PlanB:
+If the program runs into read-only files, the program will output an error message. This is because the program cannot delete read-only files! The solution to this issue is to manually delete the save directory and run the program again.
 
-<img src="https://s31.postimg.org/upr3xd6rv/planb_gui.png" hspace="10">
+## How To Use
 
-+ Enter the path to the directory that you want to copy file and folder from in the first entry box.
-+ Then, enter the path to the directory that you want the copied files to be pasted to. 
-+ Once both directory paths have been entered, press the "Submit" button to copy files from the first directory to the second.
+To use PlanB, a user enters all of the paths they would like to backup into the save directory. 
+
+To backup a directory, a user enters the path to the directory into the folders.json file found in the programs data directory.
+To backup a file. a user enters the path to the file into the files.json file found in the programs data directory.
+
+Once all of the paths that the user wants to backup are entered into the appropriate files, the user can initiate the Installation & Runtime component (see Installation & Runtime above).
